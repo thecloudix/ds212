@@ -90,6 +90,12 @@ uc16 SAW_DATA[36] =  // Sawtooth wave data
    0x83A,0x8AF,0x924,0x999,0xA0E,0xA83,0xAF8,0xB6D,0xBE2,    // 270
    0xC57,0xCCC,0xD41,0xDB6,0xE2B,0xEA0,0xF15,0xF8A,0xFFF};   // 360
 
+uc16 STP_DATA[36] =  // Step wave data
+  {0x000,0x1af,0x330,0x489,0x5bd,0x6d1,0x7c9,0x8a6,0x96b,    // 90
+   0xa1d,0xabb,0xb49,0xbc8,0xc39,0xc9f,0xcfa,0xd4b,0xd94    // 180
+   0xdd5,0xe0f,0xe43,0xe72,0xe9c,0xec1,0xee2,0xf00,0xf1b,    // 270
+   0xf33,0xf49,0xf5c,0xf6d,0xf7c,0xf8a,0xf96,0xfa1,0xfab};   // 360
+
 //----------------+------------------------+-----------------+
 uc8 FnNote[][14]= {"File R/W OK!",          /* File operation completed. */
                    "File Ver Err",          /* The file version is wrong. */
@@ -149,7 +155,7 @@ uc8  Mode_Str[][7]      ={"AUTO ", "NORM " , "SNGL " ,
                           "SCAN " , "NONE " ,"STOP "};
 uc8  Depth_Str[][7]     ={" 1K  ", " 2K  " , " 4K  " , " 8K  "};
 uc8  Source_Str[][8]    ={"CH_A  ","CH_B  ","CH_3 "};
-uc8  Wave_Str[][10]     ={"Squar   ","Sine    ","Triangle","Sawtooth"};
+uc8  Wave_Str[][10]     ={"Squar   ","Sine    ","Triangle","Sawtooth","Step    "};
 uc8  Freq_Str[][10]     ={" 10Hz    "," 20Hz    "," 50Hz    "," 100Hz   ",
                           " 200Hz   "," 500Hz   "," 1KHz    "," 2KHz    ",
                           " 5KHz    "," 10KHz   "," 20KHz   "," 50KHz   ",
@@ -2199,6 +2205,8 @@ u32 WaveOut_Date(u16 type)
     return (u32)TRG_DATA; break;
   case 3:
     return (u32)SAW_DATA; break;
+  case 4:
+    return (u32)STP_DATA; break;
   default:
     return 0;
   }
